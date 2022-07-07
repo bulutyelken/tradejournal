@@ -14,7 +14,7 @@ import { useState } from "react";
 
 
 function Account(){
-    var accOptions = {startingBalance:"200",risk:"1"};
+    var accOptions = {startingBalance:200,risk:1};
     // localStorage.setItem('config',JSON.stringify(accOptions));
 
     const [update,setUpdate] = useState(false);
