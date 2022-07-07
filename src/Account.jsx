@@ -32,7 +32,7 @@ function Account(){
         },
         title: {
             display: true,
-            text: 'Chart.js Line Chart',
+            text: 'Trash data for now',
         },
     },
     };
