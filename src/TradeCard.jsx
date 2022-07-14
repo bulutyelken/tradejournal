@@ -76,7 +76,7 @@ function TradeCard({ add }) {
             exit: $("#exit").val(),
             rrRatio: $("#rr").val(),
             side: $("#side").val().toLowerCase() === "long" ? 1 : 0,
-            returnCash: parseInt($("#returncash").val()),
+            returnCash: parseFloat(($("#returncash").val())),
             returnPercent: $("#returnpercent").val(),
             setups: setupsSplitted,
             risk: $("#risk").val().toUpperCase(),
