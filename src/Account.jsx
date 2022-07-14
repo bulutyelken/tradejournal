@@ -23,7 +23,7 @@ function Account(){
     // localStorage.setItem('config',JSON.stringify(accOptions));
 
     const [update,setUpdate] = useState(false);
-    let trades =  JSON.parse(localStorage.getItem('trades'));
+    const [trades,setTrades] =  useState(JSON.parse(localStorage.getItem('trades')));
 
     let chart = [startingBalance];
     for(let i=0; i<trades.length; i++)
@@ -44,7 +44,7 @@ function Account(){
             },
             title: {
                 display: true,
-                text: 'Trash data for now',
+                text: 'Balance',
             },
         },
 
