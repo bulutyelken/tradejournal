@@ -6,7 +6,7 @@ import Traderow from "./Traderow";
 
 
 function TradeCard({ add }) {
-
+    //ilk ziyaret edişte tetiklenir
     if(!localStorage.getItem('trades')){
         const btc =[
             {
@@ -42,7 +42,6 @@ function TradeCard({ add }) {
         ]
         localStorage.setItem('trades',JSON.stringify(btc));
     }
-    
         var setupsSplitted;
         const [trades, setTrades] = useState(
         JSON.parse(localStorage.getItem("trades"))
@@ -77,7 +76,7 @@ function TradeCard({ add }) {
             exit: $("#exit").val(),
             rrRatio: $("#rr").val(),
             side: $("#side").val().toLowerCase() === "long" ? 1 : 0,
-            returnCash: $("#returncash").val(),
+            returnCash: parseInt($("#returncash").val()),
             returnPercent: $("#returnpercent").val(),
             setups: setupsSplitted,
             risk: $("#risk").val().toUpperCase(),
@@ -188,7 +187,7 @@ function TradeCard({ add }) {
                         </td>
                     </tr>
                     )}
-                {trades.slice(0).reverse().map((elements) => ( //slice(0).reverse() tradelerin tersten dizilmesi icin.
+                {trades.slice(0).reverse().map((elements) => ( //slice(0).reverse() kısmı tradelerin tersten dizilmesi icin.
                     <Traderow
                         key={elements.id}
                         id={elements.id}

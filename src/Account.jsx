@@ -10,41 +10,55 @@ Tooltip,
 Legend,
 } from 'chart.js';
 import { useState } from "react";
+import $ from "jquery";
 
 
 
 function Account(){
-    var accOptions = {startingBalance:200,risk:1};
-    if(!localStorage.getItem('config')){
-        localStorage.setItem('config',JSON.stringify(accOptions));
+    console.log(parseInt(localStorage.getItem('startingBalance')));
+    const [startingBalance,setStartingBalance] = useState(parseInt(localStorage.getItem('startingBalance')));
+    if(!localStorage.getItem('startingBalance')){
+        localStorage.setItem('startingBalance',JSON.stringify(startingBalance));
     }
     // localStorage.setItem('config',JSON.stringify(accOptions));
 
     const [update,setUpdate] = useState(false);
-    const [config,setConfig] = useState(accOptions);
+    let trades =  JSON.parse(localStorage.getItem('trades'));
 
-
+    let chart = [startingBalance];
+    for(let i=0; i<trades.length; i++)
+    {
+        if(!trades[i].status){
+            chart.push(chart[chart.length-1]-trades[i].returnCash);
+            continue;
+        }
+        chart.push(chart[chart.length-1]+trades[i].returnCash);
+        
+    }
+    
     const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: 'top'
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top'
+            },
+            title: {
+                display: true,
+                text: 'Trash data for now',
+            },
         },
-        title: {
-            display: true,
-            text: 'Trash data for now',
-        },
-    },
+
     };
     const labels = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
     const data = {
-    labels,
-    datasets: [
+        labels,
+        datasets: [
         {
             label: 'Dataset 1',
-            data: [config.startingBalance,config.startingBalance*2,config.startingBalance*3,config.startingBalance*4,config.startingBalance*4,config.startingBalance*2,config.startingBalance*5,config.startingBalance*3,config.startingBalance*4,config.startingBalance*5],
+            data: chart,
             borderColor: 'orange',
             backgroundColor: 'orange',
+            redraw: true,
         }
         ],
     };
@@ -58,17 +72,11 @@ function Account(){
     Legend
     );
     
-   
 
     function btnUpdate(){
-        accOptions.startingBalance = document.getElementById("start").value;
-        accOptions.risk = document.getElementById("risk").value;
-        setConfig(accOptions);
-        localStorage.setItem('config',JSON.stringify(config));
+        localStorage.setItem('startingBalance',$('#start').val())
     }
     
-    
-
     return (
         <div className="bg-back p-4 flex">
             <div className="w-5/6">
@@ -83,21 +91,15 @@ function Account(){
                         <span>Starting Balance:</span>                          
                         <input id="start" type="number" placeholder="Balance" className="w-24 ml-2 text-black"/>
                     </div>
-                    <div className="text-2xl text-slate-200 flex items-center justify-between">
-                        <span>Risk:</span>                          
-                        <input id="risk" type="number" placeholder="Risk %" className="w-24 ml-2 text-black"/>
+                    <div className="flex flex-row-reverse">
+                        <button className="bg-trade mt-4 p-3 w-30 rounded " onClick={btnUpdate}>Şimdi Güncelle</button>
                     </div>
-                    <button className="bg-trade mt-4 p-3 w-30 self-end" onClick={btnUpdate}>Şimdi Güncelle</button>
                 </div> 
                 : 
                 <div>
                     <div className="text-2xl text-slate-200 flex my-3 items-center justify-between">
                         <span>Starting Balance:</span>                          
-                        <div className="bg-white text-gray-600 w-24 text-center">{JSON.parse(localStorage.getItem('config')).startingBalance}</div>
-                    </div>
-                    <div className="text-2xl text-slate-200 flex items-center justify-between">
-                        <span>Risk:</span>                          
-                        <div className="bg-white text-gray-600 w-24 text-center">{JSON.parse(localStorage.getItem('config')).risk}%</div>
+                        <div className="bg-white text-gray-600 w-24 text-center">{JSON.parse(localStorage.getItem('startingBalance'))}</div>
                     </div>
                 </div> 
                 
