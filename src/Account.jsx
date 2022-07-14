@@ -15,11 +15,10 @@ import $ from "jquery";
 
 
 function Account(){
-    console.log(parseInt(localStorage.getItem('startingBalance')));
-    const [startingBalance,setStartingBalance] = useState(parseInt(localStorage.getItem('startingBalance')));
     if(!localStorage.getItem('startingBalance')){
-        localStorage.setItem('startingBalance',JSON.stringify(startingBalance));
+        localStorage.setItem('startingBalance',1000);
     }
+    const [startingBalance,setStartingBalance] = useState(parseInt(localStorage.getItem('startingBalance')));
     // localStorage.setItem('config',JSON.stringify(accOptions));
 
     const [update,setUpdate] = useState(false);
