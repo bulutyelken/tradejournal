@@ -55,8 +55,8 @@ function Account(){
         {
             label: 'Dataset 1',
             data: chart,
-            borderColor: 'orange',
-            backgroundColor: 'orange',
+            borderColor: '#334257',
+            backgroundColor: '#334257',
             redraw: true,
         }
         ],
