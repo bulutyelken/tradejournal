@@ -42,7 +42,7 @@ function Traderow(props) {
                     <AiOutlineArrowDown className='m-1'/>
                 </div>
                 {setupsMore && 
-                <div className="text-right pr-3 absolute top-11 border-b-2 border-b-back w-48  z-10 bg-setup flex-col" onMouseOver={showSetups}>
+                <div className="text-right pr-3 absolute top-11 border-b-2 border-b-black w-48  z-10 bg-setup flex-col" onMouseOver={showSetups}>
                     {props.setups.map((setup)=>(
                         <div>
                             <span>{props.setups.findIndex(setups => setups === setup)+1}-)</span>

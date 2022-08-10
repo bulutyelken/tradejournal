@@ -34,9 +34,9 @@ header{
   height: 200px;
 }
 
-#addBtn:hover,#accBtn:hover{
+/* #addBtn:hover,#accBtn:hover{
   background-color: rgb(29, 33, 36);
-}
+} */
 #homeBtn:hover{
   background-color: rgb(29, 33, 36);
 }

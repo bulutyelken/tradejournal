@@ -136,7 +136,7 @@ function TradeCard({ add }) {
 
     return (
         <div className="px-4">
-            <div className="bg-back pt-2">
+            <div className="bg-back pt-3 pb-4">
                 <table className="w-full bg-trade table-auto">
                     <tr>
                         <th>STATUS</th>

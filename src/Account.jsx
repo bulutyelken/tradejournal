@@ -13,7 +13,6 @@ import { useState } from "react";
 import $ from "jquery";
 
 
-
 function Account(){
     if(!localStorage.getItem('startingBalance')){
         localStorage.setItem('startingBalance',1000);
@@ -34,7 +33,11 @@ function Account(){
         chart.push(chart[chart.length-1]+trades[i].returnCash);
         
     }
-    
+    const blackColor = {
+        backgroundColor: 'black',
+        borderColor: 'black',
+        color: 'black',
+    } 
     const options = {
         responsive: true,
         plugins: {
@@ -44,6 +47,10 @@ function Account(){
             title: {
                 display: true,
                 text: 'Balance',
+                font: {
+                    size:24,
+                    color: blackColor.color,
+                }
             },
         },
 
@@ -77,33 +84,48 @@ function Account(){
     }
     
     return (
-        <div className="bg-back p-4 flex">
-            <div className="w-5/6">
-                <Line options={options} data={data} className=" bg-white rounded p-6 mr-4"/>
-            </div>
-            <div className="flex flex-col w-1/5">
-                <button className="bg-trade rounded p-3" onClick={()=>{setUpdate(prevValue=>!prevValue)}}>Güncelle</button>
-                {update
-                ? 
-                <div className="w-full">
-                    <div className="text-2xl text-slate-200 flex my-3 items-center justify-between">
-                        <span>Starting Balance:</span>                          
-                        <input id="start" type="number" placeholder="Balance" className="w-24 ml-2 text-black"/>
-                    </div>
-                    <div className="flex flex-row-reverse">
-                        <button className="bg-trade mt-4 p-3 w-30 rounded " onClick={btnUpdate}>Şimdi Güncelle</button>
-                    </div>
-                </div> 
-                : 
-                <div>
-                    <div className="text-2xl text-slate-200 flex my-3 items-center justify-between">
-                        <span>Starting Balance:</span>                          
-                        <div className="bg-white text-gray-600 w-24 text-center">{JSON.parse(localStorage.getItem('startingBalance'))}</div>
-                    </div>
-                </div> 
-                
+        <div className="bg-back p-4">
+            <div className=" flex">
+                <div className="w-5/6">
+                    <Line options={options} data={data} className=" bg-white rounded p-6 mr-4"/>
+                </div>
+                <div className="flex flex-col w-1/5">
+                    <button className="bg-trade rounded p-3" onClick={()=>{setUpdate(prevValue=>!prevValue)}}>Güncelle</button>
+                    {update
+                    ? 
+                    <div className="w-full">
+                        <div className="text-2xl text-slate-200 flex my-3 items-center justify-between">
+                            <span>Starting Balance:</span>                          
+                            <input id="start" type="number" placeholder="Balance" className="w-24 ml-2 text-black"/>
+                        </div>
+                        <div className="flex flex-row-reverse">
+                            <button className="bg-trade mt-4 p-3 w-30 rounded " onClick={btnUpdate}>Şimdi Güncelle</button>
+                        </div>
+                    </div> 
+                    : 
+                    <div>
+                        <div className="text-2xl text-slate-200 flex my-3 items-center justify-between">
+                            <span>Starting Balance:</span>                          
+                            <div className="bg-white text-gray-600 w-24 text-center">{JSON.parse(localStorage.getItem('startingBalance'))}</div>
+                        </div>
+                    </div> 
+                    
                 }
+                    
+                </div>
                 
+            </div>
+            <div className="mt-10 rounded bg-white h-screen flex flex-row justify-around pt-6 text-lg">
+                <div>
+                    <h1>Winrate According to Trade Side</h1>
+                    
+                </div>
+                <div>
+                    <h1>Winrate According to Trade Side</h1>
+                </div>
+                <div>
+                    <h1>Winrate According to Trade Side</h1>
+                </div>
             </div>
         </div>
     )
