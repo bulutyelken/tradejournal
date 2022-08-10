@@ -35,14 +35,14 @@ function Traderow(props) {
             <td className="font-bold" style={{color: props.status ? 'green' : '#991b1b'}}>${props.returnCash}</td>
             <td style={{color: props.status ? 'green' : '#991b1b'}}>{props.status ? '+' : '-'}
                 {props.returnPercent}%</td>
-            <td className="bg-setup flex items-center justify-center m-0 uppercase relative w-52" onMouseOver={showSetups} onMouseLeave={hideSetups}>
+            <td className="bg-setup flex items-center justify-center m-0 uppercase relative w-auto" onMouseOver={showSetups} onMouseLeave={hideSetups}>
                 <div className=" rounded  text-center ortala relative pl-4 py-2" >
                     <span className="font-bold">{props.setups[0]}</span>
                     <span className="text-xs">&nbsp;&nbsp;&nbsp;+{props.setups.length-1} more</span> 
                     <AiOutlineArrowDown className='m-1'/>
                 </div>
                 {setupsMore && 
-                <div className="text-right pr-3 absolute top-11 border-b-2 border-b-back w-52  z-10 bg-setup flex-col" onMouseOver={showSetups}>
+                <div className="text-right pr-3 absolute top-11 border-b-2 border-b-back w-48  z-10 bg-setup flex-col" onMouseOver={showSetups}>
                     {props.setups.map((setup)=>(
                         <div>
                             <span>{props.setups.findIndex(setups => setups === setup)+1}-)</span>
