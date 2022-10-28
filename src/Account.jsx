@@ -81,6 +81,8 @@ function Account(){
 
     function btnUpdate(){
         localStorage.setItem('startingBalance',$('#start').val())
+        //window.location.reload()
+        setStartingBalance(parseFloat($('#start').val()))
     }
     
     return (
@@ -90,7 +92,7 @@ function Account(){
                     <Line options={options} data={data} className=" bg-white rounded p-6 mr-4"/>
                 </div>
                 <div className="flex flex-col w-1/5">
-                    <button className="bg-trade rounded p-3" onClick={()=>{setUpdate(prevValue=>!prevValue)}}>Güncelle</button>
+                    <button className="bg-trade rounded p-3" onClick={()=>{setUpdate(prevValue=>!prevValue)}}>Update Starting Balance</button>
                     {update
                     ? 
                     <div className="w-full">
@@ -99,7 +101,7 @@ function Account(){
                             <input id="start" type="number" placeholder="Balance" className="w-24 ml-2 text-black"/>
                         </div>
                         <div className="flex flex-row-reverse">
-                            <button className="bg-trade mt-4 p-3 w-30 rounded " onClick={btnUpdate}>Şimdi Güncelle</button>
+                            <button className="bg-trade mt-4 p-3 w-30 rounded " onClick={btnUpdate}>Update</button>
                         </div>
                     </div> 
                     : 
@@ -115,18 +117,7 @@ function Account(){
                 </div>
                 
             </div>
-            <div className="mt-10 rounded bg-white h-screen flex flex-row justify-around pt-6 text-lg">
-                <div>
-                    <h1>Winrate According to Trade Side</h1>
-                    
-                </div>
-                <div>
-                    <h1>Winrate According to Trade Side</h1>
-                </div>
-                <div>
-                    <h1>Winrate According to Trade Side</h1>
-                </div>
-            </div>
+            
         </div>
     )
 }
