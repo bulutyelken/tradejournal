@@ -21,7 +21,8 @@ function Account(){
     // localStorage.setItem('config',JSON.stringify(accOptions));
 
     const [update,setUpdate] = useState(false);
-    const [trades,setTrades] =  useState(JSON.parse(localStorage.getItem('trades')));
+    const trades = JSON.parse(localStorage.getItem('trades'))
+    //const [trades,setTrades] =  useState(JSON.parse(localStorage.getItem('trades')));
 
     let chart = [startingBalance];
     for(let i=0; i<trades.length; i++)
@@ -46,7 +47,7 @@ function Account(){
             },
             title: {
                 display: true,
-                text: 'Balance',
+                text: 'Account',
                 font: {
                     size:24,
                     color: blackColor.color,
@@ -60,7 +61,7 @@ function Account(){
         labels,
         datasets: [
         {
-            label: 'Dataset 1',
+            label: 'Balance',
             data: chart,
             borderColor: '#334257',
             backgroundColor: '#334257',

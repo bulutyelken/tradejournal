@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Header from "./Header";
-import TradeCard from "./TradeCard";
+import Header from "./components/Header";
+import TradeCard from "./components/TradeCard";
 import {BrowserRouter , Route, Routes} from "react-router-dom"
-import Account from "./Account";
+import Account from "./components/Account";
 
 function App() {
     // useEffect(() => {

@@ -25,8 +25,7 @@ input{
 }
 
 header{
-  background-color: aqua;
-  height: 50px;
+  height: 60px;
 }
 
 #tradecarddiv{
@@ -37,8 +36,12 @@ header{
 /* #addBtn:hover,#accBtn:hover{
   background-color: rgb(29, 33, 36);
 } */
-#homeBtn:hover{
-  background-color: rgb(29, 33, 36);
+
+.homeBtn:hover .trdr{
+    color: #95CD41;
+}
+.homeBtn:hover .jrnl{
+    color: #991B1B;
 }
 
 

@@ -20,25 +20,55 @@ function TradeCard({ add }) {
             side:1,
             returnCash:50,
             returnPercent:5,
-            setups:["LIQUDITY","WYCKOFF","FIBONACCI"],
+            setups:["LIQUIDITY","WYCKOFF","FIBONACCI"],
             risk:"1R",
             ss:"https://www.tradingview.com/x/ewxK5QuG/"
         },
         {
-                id:1,
-                status:1,
-                date:"10.06.2022",
-                parity:"BTCUSDTPERP",
-                entry:30000,
-                exit:20000,
-                rrRatio:20,
-                side:0,
-                returnCash:200,
-                returnPercent:20,
-                setups:["OTE","WYCKOFF","3BOX SETUP"],
-                risk:"1R",
-                ss:"https://www.tradingview.com/x/ewxK5QuG/"
-            }
+            id:1,
+            status:1,
+            date:"10.06.2022",
+            parity:"BTCUSDTPERP",
+            entry:16627,
+            exit:17000,
+            rrRatio:4,
+            side:0,
+            returnCash:40,
+            returnPercent:4,
+            setups:["OTE","WYCKOFF","3BOX SETUP"],
+            risk:"1R",
+            ss:"https://www.tradingview.com/x/m5amBfbf/"
+        },
+        {
+            id:2,
+            status:0,
+            date:"10.06.2022",
+            parity:"BTCUSDTPERP",
+            entry:16778,
+            exit:16671,
+            rrRatio:2,
+            side:1,
+            returnCash:20,
+            returnPercent:2,
+            setups:["3BOX SETUP"],
+            risk:"1R",
+            ss:"https://www.tradingview.com/x/lN5mNGe2/"
+        },
+        {
+            id:3,
+            status:1,
+            date:"10.06.2022",
+            parity:"ETHUSD",
+            entry:1543,
+            exit:1947,
+            rrRatio:3.85,
+            side:1,
+            returnCash:42,
+            returnPercent:4.1,
+            setups:["LIQUIDITY","ORDERBLOCK"],
+            risk:"1R",
+            ss:"https://www.tradingview.com/x/jltaxg2z/"
+        }
         ]
         localStorage.setItem('trades',JSON.stringify(btc));
     }

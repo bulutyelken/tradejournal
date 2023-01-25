@@ -58,11 +58,12 @@ function Traderow(props) {
                         <BiLinkExternal size={20} className="ml-1"/>
                 </div>
             </td>
-            <td>
+            <td className='pt-2'>
                 <button
                     onClick={() => {
                         props.removeTrade(props.id);
                     }}
+                    
                 >
                     <BsFillTrashFill size={20} className="text-slate-800" />
                 </button>
