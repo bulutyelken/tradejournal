@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import TradeCard from "./components/TradeCard";
 import {BrowserRouter , Route, Routes} from "react-router-dom"
 import Account from "./components/Account";
+import Footer from "./components/Footer";
 
 function App() {
     // useEffect(() => {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/" element={<TradeCard add={add} />} />
                 <Route index path="/account" element={<Account setAdd={setAdd} />} />
             </Routes>
+            <Footer />
         </BrowserRouter>
     );
 }
