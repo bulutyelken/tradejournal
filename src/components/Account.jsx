@@ -87,7 +87,7 @@ function Account(){
     }
     
     return (
-        <div className="bg-back p-4">
+        <div className="bg-back px-4 pt-20">
             <div className=" flex">
                 <div className="w-5/6">
                     <Line options={options} data={data} className=" bg-white rounded p-6 mr-4"/>
