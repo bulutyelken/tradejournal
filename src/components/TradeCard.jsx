@@ -6,6 +6,14 @@ import Traderow from "./Traderow";
 
 
 function TradeCard({ add }) {
+    const [pairs, setPairs] = useState([])
+    useEffect(() => {
+        fetch("https://api.binance.com/api/v3/exchangeInfo")
+        .then(response => response.json())
+        .then(data => setPairs(data.symbols.map(item => item.symbol)));       
+    }, []);
+    console.log(pairs)
+    
     //ilk ziyaret edişte tetiklenir
     if(!localStorage.getItem('trades')){
         const btc =[
@@ -72,16 +80,23 @@ function TradeCard({ add }) {
         ]
         localStorage.setItem('trades',JSON.stringify(btc));
     }
-        var setupsSplitted;
-        const [trades, setTrades] = useState(
-        JSON.parse(localStorage.getItem("trades"))
+
+    var setupsSplitted;
+    const [trades, setTrades] = useState(
+    JSON.parse(localStorage.getItem("trades"))
     );
+
     useEffect(() => {
         const items = JSON.parse(localStorage.getItem("trades"));
         if (items) {
             setTrades(items);
         }
     }, []);
+
+    const handleParityChange =  (e) => {
+        console.log(e.target.value)
+        console.log(document.querySelector('#inputParity'))
+    };
 
     function removeTrade(id) {
         console.log(id + " removed");
@@ -193,7 +208,7 @@ function TradeCard({ add }) {
                             </select>
                         </td>
                         <td className="w-[119px]"><input type="date" name="date" id="date" className="w-28"/></td>
-                        <td className="w-[166px]"><input type="text" name="parity" id="parity" className="w-[90%]" placeholder=" parity" /></td>
+                        <td className="w-[166px]" onChange={handleParityChange} id="inputParity"><input type="text" name="parity" id="parity" className="w-[90%]" placeholder=" parity" /></td>
                         <td className="w-[80px]"><input type="number" name="entry" id="entry" className="w-[90%]" placeholder=" entry"/></td>
                         <td className="w-[87px]"><input type="number" name="exit" id="exit" className="w-[90%]" placeholder=" exit" /></td>
                         <td className="w-[102px]"><input type="number" name="rr" id="rr" className="w-[90%]" placeholder=" rr" /></td>
