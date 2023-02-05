@@ -94,8 +94,27 @@ function TradeCard({ add }) {
     }, []);
 
     const handleParityChange =  (e) => {
-        console.log(e.target.value)
-        console.log(document.querySelector('#inputParity'))
+        //console.log(e.target.value)
+        //console.log(document.querySelector('#inputParity'))
+        
+        var datalist = document.querySelector('#parities')
+        datalist.innerHTML = '';
+        var parities = pairs.filter(name => name.includes(e.target.value.toUpperCase()))
+
+        const firstFiveParities = parities.slice(0, 5);
+
+        
+        //console.log(firstFiveParities)
+        firstFiveParities.forEach(element => {
+            var option = document.createElement('option');
+            option.value = element
+            datalist.appendChild(option)
+            
+        });
+        // for(let i=0; i<5; i++){
+        //     const element = document.createElement('option');
+        //     element.value = parity
+        // }
     };
 
     function removeTrade(id) {
@@ -208,7 +227,12 @@ function TradeCard({ add }) {
                             </select>
                         </td>
                         <td className="w-[119px]"><input type="date" name="date" id="date" className="w-28"/></td>
-                        <td className="w-[166px]" onChange={handleParityChange} id="inputParity"><input type="text" name="parity" id="parity" className="w-[90%]" placeholder=" parity" /></td>
+                        <td className="w-[166px]" onChange={handleParityChange} id="inputParity">
+                            <input list="parities" type="text" name="parity" id="parity" className="w-[90%]" placeholder=" parity" />
+                            <datalist id="parities">
+
+                            </datalist>
+                        </td>
                         <td className="w-[80px]"><input type="number" name="entry" id="entry" className="w-[90%]" placeholder=" entry"/></td>
                         <td className="w-[87px]"><input type="number" name="exit" id="exit" className="w-[90%]" placeholder=" exit" /></td>
                         <td className="w-[102px]"><input type="number" name="rr" id="rr" className="w-[90%]" placeholder=" rr" /></td>
@@ -252,6 +276,9 @@ function TradeCard({ add }) {
                     />
                     ))}
                 </table>
+                
+                    
+                
             </div>
         </div>
     );
