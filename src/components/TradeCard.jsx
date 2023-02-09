@@ -3,16 +3,30 @@ import { GoDiffAdded } from "react-icons/go";
 import $ from "jquery";
 import { v4 as uuid } from "uuid";
 import Traderow from "./Traderow";
-
+import axios from "axios"
 
 function TradeCard({ add }) {
     const [pairs, setPairs] = useState([])
-    useEffect(() => {
-        fetch("https://api.binance.com/api/v3/exchangeInfo")
-        .then(response => response.json())
-        .then(data => setPairs(data.symbols.map(item => item.symbol)));       
-    }, []);
-    console.log(pairs)
+
+    const fetchData = () => {
+        const crypto = "https://api.binance.com/api/v3/exchangeInfo"
+        const forex = "https://finnhub.io/api/v1/forex/symbol?exchange=oanda&token=cfghhthr01qlga2ueg4gcfghhthr01qlga2ueg50"
+
+        const getCrypto = axios.get(crypto)
+        const getForex = axios.get(forex)
+
+        axios.all([getCrypto, getForex]).then(
+            axios.spread((...allData)=>{
+                const allDataCrypto = allData[0].data.symbols.map(item=>item.symbol)
+                const allDataForex = allData[1].data.map(item=>item.displaySymbol.replace('/',''))
+                setPairs(allDataCrypto.concat(allDataForex))
+            })
+        )
+    }
+
+    useEffect(()=>{
+        fetchData()
+    },[])
     
     //ilk ziyaret edişte tetiklenir
     if(!localStorage.getItem('trades')){
