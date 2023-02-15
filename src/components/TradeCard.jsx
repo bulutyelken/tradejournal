@@ -4,8 +4,10 @@ import $ from "jquery";
 import { v4 as uuid } from "uuid";
 import Traderow from "./Traderow";
 import axios from "axios"
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 function TradeCard({ add }) {
+    const [animationParent] = useAutoAnimate()
     const [pairs, setPairs] = useState([])
 
     const fetchData = () => {
@@ -32,7 +34,7 @@ function TradeCard({ add }) {
     if(!localStorage.getItem('trades')){
         const btc =[
             {
-            id:0,
+            id:uuid(),
             status:1,
             date:"09.06.2022",
             parity:"BTCUSDTPERP",
@@ -47,7 +49,7 @@ function TradeCard({ add }) {
             ss:"https://www.tradingview.com/x/ewxK5QuG/"
         },
         {
-            id:1,
+            id:uuid(),
             status:1,
             date:"10.06.2022",
             parity:"BTCUSDTPERP",
@@ -62,7 +64,7 @@ function TradeCard({ add }) {
             ss:"https://www.tradingview.com/x/m5amBfbf/"
         },
         {
-            id:2,
+            id:uuid(),
             status:0,
             date:"10.06.2022",
             parity:"BTCUSDTPERP",
@@ -77,7 +79,7 @@ function TradeCard({ add }) {
             ss:"https://www.tradingview.com/x/lN5mNGe2/"
         },
         {
-            id:3,
+            id: uuid(),
             status:1,
             date:"10.06.2022",
             parity:"ETHUSD",
@@ -215,7 +217,7 @@ function TradeCard({ add }) {
     return (
         <div className="px-4 h-full">
             <div className="bg-back pt-20 pb-4">
-                <table className="w-full bg-trade table-auto">
+                <table className="w-full bg-trade table-auto" ref={animationParent}>
                     <tr>
                         <th>STATUS</th>
                         <th>DATE</th>
