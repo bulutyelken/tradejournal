@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 
 function Header({setAdd}){
     return(
-        <header className='flex justify-around items-center w-full h-16 bg-header fixed'>
+        <header className='flex justify-around items-center w-full h-16 bg-header fixed z-10'>
                 
                     <Link  to="account" className='h-full'>
                         <button id='accBtn' className=" text-zinc-300 font-bold text-xl border-x-2 border-gray-400 h-full px-2 hover:bg-white hover:text-black hover:border-white transition-all">Account</button>

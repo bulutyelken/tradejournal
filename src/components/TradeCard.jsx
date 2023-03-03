@@ -215,7 +215,7 @@ function TradeCard({ add }) {
     }
 
     return (
-        <div className="px-4 h-full">
+        <div className="px-4 h-full pb-20">
             <div className="bg-back pt-20 pb-4">
                 <table className="w-full bg-trade table-auto" ref={animationParent}>
                     <tr>
